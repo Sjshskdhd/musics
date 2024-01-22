@@ -6,7 +6,6 @@ from SedthonMusic import app
 import random
 from datetime import datetime
 import requests
-import pytz
 from pytgcalls import PyTgCalls, StreamType
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
 from SedthonMusic.core.call import Anon
