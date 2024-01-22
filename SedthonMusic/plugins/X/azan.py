@@ -2,15 +2,15 @@ import asyncio
 from pyrogram import filters
 from pyrogram.errors import FloodWait
 from pyrogram.raw import types
-from AnonX import app
+from SedthonMusic import app
 import random
 from datetime import datetime
 import requests
 import pytz
 from pytgcalls import PyTgCalls, StreamType
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
-from AnonX.core.call import Anon
-from AnonX.utils.database import *
+from SedthonMusic.core.call import Anon
+from SedthonMusic.utils.database import *
 from pytgcalls.exceptions import (NoActiveGroupCall,TelegramServerError,AlreadyJoinedError)
 from pyrogram.errors import (
     ChatAdminRequired,
@@ -106,4 +106,3 @@ async def azkar():
        await play(i)
      await asyncio.sleep(174)
      await kill()
-
