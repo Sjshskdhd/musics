@@ -5,28 +5,28 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from SedthonMusic import app, Telegram
 import random
 @app.on_message(
-    command(["سيدثون","سورس","السورس","سورس سيدثون", "السيدثون"])
+    command(["جزار","سورس","السورس","سورس الجزار", "الجزار"])
 )
 async def huhh(client: Client, message: Message):
     await message.reply_photo(
-        photo=f"https://telegra.ph/file/45a08298c226a89563e4d.mp4",
+        photo=f"https://telegra.ph/file/08fd322ff781e6eaceb77.jpg",
         caption=f"""
- [𝗦𝞝𝗗𝙏𝙃𝙊𝙉 𝗨ꜱᴇʀʙᴏᴛ](https://t.me/veebvw)
+ [𝙎𝙊𝙐𝙍𝘾𝞝★𝞝𝙇𝙂𝘼𝙕𝘼𝙍](https://t.me/A_M_030)
  —————————————
- [اެݪ تِــاެࢪيٰــخَ ¦ BiLaL](https://t.me/NUNUU)
+ [اެݪ تِــاެࢪيٰــخَ ¦ ELGAZAR](https://t.me/A_M_0_3)
  
- [𓏺𝙂𝙍𝙊𝙐𝙋 𝙃𝞝𝙇𝙋](https://t.me/TIPTHON_help)
+ [𓏺𝙂𝙍𝙊𝙐𝙋 𝙃𝞝𝙇𝙋](https://t.me/jvjv785)
   
- [⍟𓏺𝙒𝞝𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝗦𝞝𝗗𝙏𝙃𝙊𝙉 𝗨ꜱᴇʀʙᴏᴛ](https://t.me/veevvw)
+ [⍟𓏺𝙒𝞝𝙇𝘾𝙊𝙈𝙀 𝙏𝙊 𝙎𝙊𝙐𝙍𝘾𝞝★𝞝𝙇𝙂𝘼𝙕𝘼𝙍](https://t.me/A_M_030)
 """,
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "اެݪ تِــاެࢪيٰــخَ ¦ BiLaL", url=f"https://t.me/nunuu"), 
+                        "اެݪ تِــاެࢪيٰــخَ ¦ ELGAZAR", url=f"https://t.me/A_M_0_3"), 
                 ],[
                     InlineKeyboardButton(
-                        "𝗦𝞝𝗗𝙏𝙃𝙊𝙉 𝗨ꜱᴇʀʙᴏᴛ", url=f"t.me/veevvw"),
+                        "𝙎𝙊𝙐𝙍𝘾𝞝★𝞝𝙇𝙂𝘼𝙕𝘼𝙍", url=f"https://t.me/A_M_030"),
                 ],
 
             ]
