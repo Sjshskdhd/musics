@@ -1,19 +1,21 @@
 #
-# Copyright (C) 2021-2022 by TeamYukki@Github, < https://github.com/TeamYukki >.
+# Copyright (C) 2021-present by TeamYukki@Github, < https://github.com/TeamYukki >.
 #
-# This file is part of < https://github.com/TeamYukki/SedthonMusicBot > project,
+# This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
 # and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/TeamYukki/SedthonMusicBot/blob/master/LICENSE >
+# Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
 #
 # All rights reserved.
+#
 
-import asyncio, random
+import asyncio
 
 from pyrogram import filters
+from pyrogram.enums import ChatType, ParseMode
 from pyrogram.types import (InlineKeyboardButton,
                             InlineKeyboardMarkup, Message)
 from youtubesearchpython.__future__ import VideosSearch
-from strings.filters import command
+
 import config
 from config import BANNED_USERS
 from config.config import OWNER_ID
@@ -22,7 +24,6 @@ from SedthonMusic import Telegram, YouTube, app
 from SedthonMusic.misc import SUDOERS
 from SedthonMusic.plugins.play.playlist import del_plist_msg
 from SedthonMusic.plugins.sudo.sudoers import sudoers_list
-from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from SedthonMusic.utils.database import (add_served_chat,
                                        add_served_user,
                                        blacklisted_chats,
@@ -32,49 +33,17 @@ from SedthonMusic.utils.database import (add_served_chat,
 from SedthonMusic.utils.decorators.language import LanguageStart
 from SedthonMusic.utils.inline import (help_pannel, private_panel,
                                      start_pannel)
-from os import getenv
-from dotenv import load_dotenv
 
-load_dotenv()
-OWNER = getenv("OWNER")
-
-async def joinch(message):
-        ch = "WONERS VEGA"
-        try:
-            await message._client.get_chat_member(ch, message.from_user.id)
-        except UserNotParticipant:
-            try:
-                await message.reply(
-                    f"يجب ان تشترك في القناة : @{ch} ",
-                    disable_web_page_preview=True,
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("القناة", url=f"https://t.me/{ch}"),
-                            ],
-                         ] 
-                      ) 
-                   )
-                return True
-            except Exception as a:
-                print(a)
-        except Exception as a:
-              print(a)
-              
 loop = asyncio.get_running_loop()
 
 
 @app.on_message(
-    command(get_command("START_COMMAND"))
+    filters.command(get_command("START_COMMAND"))
     & filters.private
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @LanguageStart
 async def start_comm(client, message: Message, _):
-    c = await joinch(message)
-    if c:
-      return 
     await add_served_user(message.from_user.id)
     if len(message.text.split()) > 1:
         name = message.text.split(None, 1)[1]
@@ -208,7 +177,7 @@ async def start_comm(client, message: Message, _):
                 message.chat.id,
                 photo=thumbnail,
                 caption=searched_text,
-                parse_mode="markdown",
+                parse_mode=ParseMode.MARKDOWN,
                 reply_markup=key,
             )
             if await is_on_off(config.LOG):
@@ -230,7 +199,7 @@ async def start_comm(client, message: Message, _):
                 await message.reply_photo(
                     photo=config.START_IMG_URL,
                     caption=_["start_2"].format(
-                        config.MUSIC_BOT_NAME, message.from_user.first_name
+                        config.MUSIC_BOT_NAME
                     ),
                     reply_markup=InlineKeyboardMarkup(out),
                 )
@@ -254,9 +223,8 @@ async def start_comm(client, message: Message, _):
 
 
 @app.on_message(
-    command(get_command("START_COMMAND"))
+    filters.command(get_command("START_COMMAND"))
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @LanguageStart
@@ -272,61 +240,7 @@ async def testbot(client, message: Message, _):
 
 welcome_group = 2
 
-@app.on_message(command("بوت"))
-async def boty(client, message):
-  nq = ["نعم يقلب البوت",
-    "عايز اي",
-      "نعم يروحي",
-          "اي يرجوله", 
-              "معاك يحب",
-                  "عيوني" ,
-                    "اي ياصحابي",
-                     "عاوز ايه من خرا",
-                       " قول مش فاضيك",
-                          "ارغي",
-                             "معاك اهو", 
-                                "مش فاضي",
-                                  "اسمي سي آر يحب",
-                                    "اخرص ياكلب",
-                                      "خير اللهم خير",
-                                          "متزولنيش",
-                                            "صوتك ميعلاش",
-                                              "هوو اسم شركه",
-                                                "بوت فعينك",
-                                                  "كلم نفسك",
-                                                    "هنيمو واجيلك",
-                                                        "اعم ريح",
-                                                           "انجز عاوزني اشقط مين",
-                                                               "قول يا قلبوو",
-                                                                    "يسطاا هو علشان بحبك تصدعني",
-                                                                      "يعم قولتك ليا ام اسم",
-                                                                          "مش هرد",
-                                                                            "بطل صداع",
-                                                                                "لا انت زودها",
-                                                                                  "ايه",
-                                                                                    "خير يا ارنب",
-                                                                                      "مش هرد",
-                                                                                         "اخرس",
-                                                                                           "اشتبي",
-                                                                                             "وقح",
-                                                                                               "مو بوت",
-                                                                                                "مصدعش امي",
-                                                                                                  "هخلص واجيلك",
-                                                                                                    "محتاج وسطه علشان ارد",
-                                                                                                      "روح شخ اجري",
-                                                                                                        "بس يا شخه",
-                                                                                                          "بس لعب"]
-                                    
-  nqx = random.choice(nq
-  )
-  await message.reply_text(nqx
-  )
-async def info_new_group(message):
-   link = await app.export_chat_invite_link(message.chat.id)
-   await app.send_message(OWNER, f"""تم تفعيل مجموعة جديدة
-اسم المجموعة : {message.chat.title}
-ايدي المجموعة : {message.chat.id} 
-رابط المجموعة : {link}""")
+
 @app.on_message(filters.new_chat_members, group=welcome_group)
 async def welcome(client, message: Message):
     chat_id = message.chat.id
@@ -343,9 +257,8 @@ async def welcome(client, message: Message):
             language = await get_lang(message.chat.id)
             _ = get_string(language)
             if member.id == app.id:
-                await info_new_group(message)
                 chat_type = message.chat.type
-                if chat_type != "supergroup":
+                if chat_type != ChatType.SUPERGROUP:
                     await message.reply_text(_["start_6"])
                     return await app.leave_chat(message.chat.id)
                 if chat_id in await blacklisted_chats():
