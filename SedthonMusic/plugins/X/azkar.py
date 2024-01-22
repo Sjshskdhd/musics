@@ -125,7 +125,7 @@ async def azkar():
    "اللهم نشكوا إليك ضعفنا وقلة حيلتنا من امرنا فأغثنا وارحمنا واغفرلنا ولا تكل امرنا لمن لايخافك ولا يرحمنا ولا تؤخذنا بما فعل السفهاء منا",
    "مَنْ كَانَ آخِرُ كَلاَمِهِ لاَ إِلَهَ إِلاَّ اللَّهُ دَخَلَ الْجَنَّة"
    ]
-   while not await asyncio.sleep(600):
+   while not await asyncio.sleep(900):
      for i in chat:
        try:
          await app.send_message(i, random.choice(azkarl))
