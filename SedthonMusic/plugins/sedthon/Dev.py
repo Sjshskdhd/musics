@@ -5,7 +5,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from SedthonMusic import app, Telegram
 import random
 @app.on_message(
-    command(["جزار","سورس","السورس","سورس الجزار", "الجزار"])
+    command(["جزار","سورس","سورس الجزار", "الجزار"])
 )
 async def huhh(client: Client, message: Message):
     await message.reply_photo(
